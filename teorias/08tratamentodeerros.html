@@ -1,0 +1,41 @@
+try catch finally
+<script>
+try{
+    document.writi('cfb Cursos') // escreveu com i, encontra o erro, para o try
+}catch(e){ //tratamento do erro e a excessão passada para o (e)
+    document.write('Erro') // mostra a mensagem
+    console.log('Mensagem de erro: ' + e.message) // ira mostrar no log o erro mas para nos n usuario
+}
+
+
+// ex: forçar o erro
+
+    var num;//maximo 10
+
+    try {
+        num = prompt("Digite um numero")
+        if(num>10){    
+            throw new Error("Valor invalido") // ao cair no false ele ja vai direto para catch
+        } 
+        document.write('Valor: ' + num)
+    } catch(e){ // ao cair no catch ira gerar a excessão
+        document.write('Error: ' + e.message)
+    } finally{
+        document.write('Fim do tratamento') // será executada com try ou com catch independente
+    }
+    
+    
+    try {
+        num = prompt("Digite um numero")
+        if(num>10){    
+            throw new Error("Valor invalido") //
+        } 
+    } catch(e){ // ao cair no catch ira gerar a excessão
+        console.log('Erro:'+ e.message)// ira mostrar apenas no console o erro
+        num = 10
+    } finally{
+        document.write('Valor:' + num) // caso tenha erro ira ser Valor:10, caso n sera valor e o numero escrito
+    }
+
+    ex:num
+    </script>
