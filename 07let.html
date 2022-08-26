@@ -1,0 +1,27 @@
+variavel declara com var no codigo inteiro
+
+var x =10
+write(x) // vai escrever 10
+if(x == 10){
+    var num = 5
+    write(x) // vai escrever 5
+}
+write(x) // vai escrever 5
+
+
+variavel com let serve para o escopo global
+let x = 10 // escreve 10
+if(x==10){
+    let x = 5 // escreve 5
+}
+write(x) // escreve 10
+fora continuara sendo num = 10
+
+
+porem 
+let x = 10 // escreve 10
+if(x==10){
+    x = 5 // escreve 5
+}
+write(x) // escreve 5 -- pq x ta atribuindo a global não criando uma local
+

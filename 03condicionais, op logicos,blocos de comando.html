@@ -1,0 +1,59 @@
+
+    <script>
+        if (condition) {
+            //condition se rolar return
+        }   {
+            // senao rola o senao
+        }
+        //operadores condicionais(>,<,>=,<=,!=,!==,==,===)
+        //operadores logicos && e || (e , ou de matematica) tabela verdade, se e os dois lados, ou 1 ou outro
+        var pontos = 50;
+        if(((pontos>=30)&&(pontos<=40))||((pontos>=50)&&(pontos<=70))){
+            //document.write('ganhou')
+        } else { //document.write('perdeu') 
+        // pode ser variavel x ='ganhou', atribui'perdeu'; return x/ document.write(x) fora do if
+        }
+        //If aninhado
+        var nota = 100
+        var res;
+
+        if(nota>=60){
+            res='Aprovado';
+            if(nota>=95){
+                res+='com louvor'
+            } else{
+                res+='com nota normal'
+            }
+        } else if(nota>=40){
+            res='recuperação'
+        } else{
+            res='reprovado'
+            if(nota>=20){
+                res+='com nota baixa'
+            } else{
+                res+='com nota péssima'
+            }
+        }
+        document.write(res);
+        
+        /* blocos de comando apenas com uma instruçao pode ser na mesma linha e sem chaves
+            ex if(num >10) document.write('maior que 10')
+                else document.write('menor q 10')*/  
+        var pos, msg;
+        pos = 1;
+        switch(pos){
+            case 1:
+                msg = 'primeiro lugar'        
+                break;
+            case 2:
+                msg='segundo lugar'
+                break;
+            case 3:
+                msg='terceiro lugar'
+                break;
+            default:
+                msg='fora do pódio'
+                break;
+        }   
+        document.write(msg);
+    </script>

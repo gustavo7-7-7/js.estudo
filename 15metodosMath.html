@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* constantes 
+        var mt=Math.PI;//ira chamar pi = 3,14, euler, etc
+        document.write(mt);*/
+    
+        var va=16
+        var mt=Math.sqrt(va)//abs numero absolute, ceil arrendonda pra cima, floor arrendonda pra baixo, round arrendonda padrao(<0.5 baico, >=0.5 para cima)
+                        //pow ao quadrado(valor, base); sqrt (valor)raiz quadrada; random aleatorio entre 0  e 0,99 
+                        //max e min(maximo e menor valor)
+        document.write(mt+'<br/>'); 
+
+        var angulo=45;
+        var c=Math.cos(angulo * Math.PI / 180);// esse angulo é em graus, mas valor em radiano, entao tem que passar ano em radiano
+        var s=Math.sin(angulo * Math.PI / 180);
+
+        document.write('Angulo: '+angulo+'<br/> cosseno:'+c+'<br/> seno: '+s);
+    </script>
+</body>
+</html>

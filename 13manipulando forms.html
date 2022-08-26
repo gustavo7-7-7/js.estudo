@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        label{
+            display: block;
+        }
+        input{
+            display: block;
+        }
+        input[type="submit"],label{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form name="curso1" id="curso1" action="#" method="post">
+        <label>Nome</label>
+        <input type="text" name="fNome" value="Primeiro - 1">
+        <label>Senha</label>
+        <input type="password" name="fSenha" value="123">
+        <input type="submit" name="btEnviar" value="Enviar">
+    </form>
+    <form name="curso1" id="curso1" action="#" method="post">
+        <label>Nome</label>
+        <input type="text" name="fNome" value="Segundo - 2">
+        <label>Senha</label>
+        <input type="password" name="fSenha" value="123">
+        <input type="submit" name="btEnviar" value="Enviar">
+    </form>
+    <hr>
+    <script>
+        /*var fm=document.forms.length; // ele aponta para o formulario, fm ira armazenar o formulario, legnth será 2
+        document.write(fm);
+        var fm=document.forms[1].id; // vai retornar o id do 2 formularia
+        document.write(fm); 
+        //document.forms.item(1).id; da na mesma
+        //document.forms.namedItem('curso1').innerHTML; // vai retornar o form curso1 inteiro 
+
+        var fm=document.forms['curso1'].elements[0].value; // valor do 1 input do form curso1
+        document.write(fm) */
+
+        document.write(document.getElementById('curso1').elements[0].value);// vai retornar primeiro-1, pq ta primeiro q a atribuição CFBcursos, valor 1 elemento do forn curso1
+
+        var frm=document.forms[0];
+        var el=frm.elements;
+        
+        for(var i=0;i<el.length;i++){
+            el[i].style.background="#ddd"; // manipulando todos os elementos do form
+            el[i].value="Cfbcursos";    
+        }
+       
+    </script>
+</body>
+</html>
