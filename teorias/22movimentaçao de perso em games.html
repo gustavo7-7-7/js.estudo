@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game-movimentação</title>
+    <style>
+      #dv1 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border: 1px solid #000;
+        background-color: #f00;
+        left: 0;
+        top: 0;
+      }
+    </style>
+    <script>
+      //especie de interframe, para melhorar a fluidez dos eventos, utilizando keydown e keyup
+      var dx; //direçao
+      var dy;
+      var px; //posicionamento
+      var py;
+      var vel; //velocidade
+      var obj; //obj
+      var tmp; //timer
+
+      //inicializar variaveis globais
+      function inicia() {
+        dx = 0;
+        dy = 0;
+        px = 0;
+        py = 0;
+        vel = 1;
+        obj = document.getElementById("dv1");
+        tmp = setInterval(enterFrame, 1); // veloxidade mudança de frame em tempo,vai afetar na velocidade pela questão da taxa de quadros do frame, colocando ela alta e velocidade da movimentação baixa logo afetando a fluidez do movimento, sendo bem natural
+        document.addEventListener("keydown", teclaDw);
+        document.addEventListener("keyup", teclaUp);
+      }
+      function teclaDw() {
+        var tecla = event.keyCode;
+        if (tecla == 37) {
+          dx = -1;
+        } else if (tecla == 38) {
+          dy = -1;
+        } else if (tecla == 39) {
+          dx = 1;
+        } else if (tecla == 40) {
+          dy = 1;
+        }
+      }
+      function teclaUp() {
+        // apos soltar a tecla
+        var tecla = event.keyCode;
+        if (tecla == 37) {
+          // ou seja parar o deslocamento logo para a direção
+          dx = 0;
+        } else if (tecla == 38) {
+          dy = 0;
+        } else if (tecla == 39) {
+          dx = 0;
+        } else if (tecla == 40) {
+          dy = 0;
+        }
+      }
+      function enterFrame() {
+        px += dx * vel; // segurar a tecla 10, -10 esquerda ao soltar fica zero
+        py += dy * vel;
+        obj.style.left = px + "px";
+        obj.style.top = py + "px";
+      }
+      window.addEventListener("load", inicia); // renderizar as variaveis e eventos iniciais
+    </script>
+  </head>
+  <body>
+    <div id="dv1"></div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function cor() {
+        var nomeCor = "azul";
+        document.write(nomeCor + "<br/>");
+      }
+      cor(); // irá aparecer escrito azul, porem se escrever document write(nomeCor)fora da funçao irá undefined, pois a var ta dentro da funçao
+      //escopo local e global - dentro da funçao so é possivel acessar dentro da funçao, fora da funçao so as variavei globais;
+
+      //porem se dentro da funçao atribuir a variavel gloal  um valor, desde criar uma nova variavel irá mudar a global
+      var nomeCor = "vermelho";
+      function cor() {
+        nomeCor = "azul";
+      }
+      document.write(nomeCor); // ira escrever azul
+
+      //dentro da funçao pode chamar para escrever um write com 2 variaveis com mesmo nome
+      //(this.nomeCor + nomeCor) this se refere a raiz do servidor(a global) e sem this sera o valor dentro da funçao
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #dv1 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-color: #fff;
+      }
+    </style>
+    <script>
+      var tmp;
+      function mudaCor() {
+        //muda cor aleatoriamente, usando random
+        var obj = document.getElementById("dv1"); // esse objeto sera renderizado apos o loud da pagina, se chamar a function antes n dara certo
+        var r1 = Math.floor(Math.random() * 255); // floor para baixo entao poderia ser 256 para dar 255
+        var g1 = Math.floor(Math.random() * 255);
+        var b1 = Math.floor(Math.random() * 255);
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        obj.style.backgroundColor = "rgb(" + r1 + "," + g1 + "," + b1 + ")";
+        obj.style.boxShadow =
+          "10px 10px 5px rgb(" + r + "," + g + "," + b + ")";
+      }
+      //setTimeout(função caalback, tempo(s))
+      //var tmp=setTimeout(mudaCor, 3000);- chama uma vez apos 3s e finaliza
+      //var tmp=setInterval(mudaCor, 1000); //muda a cada 3s
+      function iniciar() {
+        tmp = setInterval(mudaCor, 500);
+      }
+      function parar() {
+        clearInterval(tmp); // vai limpar o intervalo referenciado a variavel
+      }
+      // se ambos addEventListener so tiver fora n vai funcionar, pois n foram renderizado, logo criar uma function para adicionar no load, ou seja renderizar os eventos apos a pagina carregar
+      function addEventos() {
+        document.getElementById("bt1").addEventListener("click", iniciar);
+        document.getElementById("bt2").addEventListener("click", parar);
+      }
+      window.addEventListener("load", addEventos);
+    </script>
+  </head>
+  <body>
+    <div id="dv1"></div>
+    <br />
+    <button id="bt1">Iniciar</button>
+    <button id="bt2">Parar</button>
+  </body>
+</html>

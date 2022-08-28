@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #dv1 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+      }
+    </style>
+    <script>
+      var px = 0; // eixo x
+      var py = 0; // eixo y na convensão js positivio é para baixo e para cima negativo
+      function cor(obj, cor) {
+        var obj = document.getElementById("dv1");
+        obj.style.backgroundColor = cor;
+      }
+      function move() {
+        var obj = document.getElementById("dv1");
+        //obter na variavel tecla o code key ou seja o codigo da tecla que for pressionado;
+        //37-esquerda, 38-cima, 39-direita, 40-baixo -- tem uma tabela js para isso
+        var tecla = event.keyCode;
+        if (tecla == 37) {
+          px -= 50;
+          obj.style.left = px + "px";
+        } else if (tecla == 38) {
+          py -= 50;
+          obj.style.top = py + "px";
+        } else if (tecla == 39) {
+          px += 50;
+          obj.style.left = px + "px";
+        } else if (tecla == 40) {
+          py += 50;
+          obj.style.top = py + "px";
+        } else if (tecla == 13) {
+          // tecla enter
+          alert("Evento Keydown removido");
+          window.removeEventListener("keydown", move);
+          cor(obj, "#fff");
+        }
+      }
+      function clicar() {
+        var obj = document.getElementById("dv1");
+        alert("Evento keydown adicionado");
+        cor(obj, "#f00");
+        window.addEventListener("keydown", move); // ja o move ira ocorrer no
+      }
+      function iniciar() {
+        var obj = document.getElementById("dv1");
+        obj.addEventListener("click", clicar); // foi objeto aqui pois na funçao o clicar ira ser no div
+      }
+      window.addEventListener("load", iniciar);
+    </script>
+  </head>
+  <body>
+    <div id="dv1"></div>
+  </body>
+</html>

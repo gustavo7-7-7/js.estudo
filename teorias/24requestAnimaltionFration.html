@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #jogador {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #00f;
+        width: 50px;
+        height: 50px;
+      }
+      button {
+        margin: 10% 0;
+      }
+    </style>
+    <script>
+      // desde setInterval ele requestAnimationFrame vc so chama uma function caalback, o intervalo do frameret quem definira é o proprio browser
+      var jog;
+      var vel;
+      var dx;
+      var dy;
+      var px;
+      var py;
+      var anima;
+      var estado;
+
+      //renderização e inicializaçao da pagina
+      function inicia() {
+        vel = 2;
+        dx = 1;
+        dy = 0;
+        px = 0;
+        py = 0;
+        estado = 1;
+        ini = document.getElementById("ini");
+        prr = document.getElementById("prr");
+        jog = document.getElementById("jogador");
+        jog.addEventListener("click", moverParar);
+        ini.addEventListener("click", function () {
+          if (!estado) {
+            estado = 1;
+            jog.style.backgroundColor = "#00f";
+            anima = requestAnimationFrame(game);
+          }
+        });
+        prr.addEventListener("click", function () {
+          if (estado) {
+            estado = 0;
+            jog.style.backgroundColor = "#f00";
+            cancelAnimationFrame(anima); //
+          }
+        });
+        game(); // ele ira chamar a game inicialmente, e a recursividade de requestAnimationFrame(game) fara esse repetição
+      }
+
+      function moverParar() {
+        if (estado) {
+          // 0 ou 1 nao precisa de condition pois considera bolleano
+          estado = 0;
+          jog.style.backgroundColor = "#f00";
+          cancelAnimationFrame(anima);
+        } else {
+          estado = 1;
+          jog.style.backgroundColor = "#00f";
+          anima = requestAnimationFrame(game);
+        }
+      }
+
+      function game() {
+        px += dx * vel; // defini a position e deslocamento em x e y de acirdi com a velocidade e direçao
+        //py+=dy*vel
+        jog.style.left = px + "px";
+        //jog.style.top=py+"px"
+        if (px > 800) {
+          dx = -1;
+        } else if (px < 0) {
+          dx = 1;
+        }
+        anima = requestAnimationFrame(game); //request animation com game fara animação pelo deslocamento da funçao game, porem tem q ter um loop em cima dele
+      }
+      window.addEventListener("load", inicia);
+    </script>
+  </head>
+  <body>
+    <div id="jogador"></div>
+    <button id="ini">Iniciar</button>
+    <button id="prr">Parar</button>
+  </body>
+</html>

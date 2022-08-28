@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+      }
+    </style>
+    <script>
+      function mudaCor(obj, cor) {
+        obj.style.backgroundColor = cor; //vai receber um objeto que ira mudar de cor
+      }
+      function mudaPos(obj) {
+        obj.style.position = "absolute"; //mudar position do site
+        obj.style.left = Math.random() * 500 + "px";
+        obj.style.top = Math.random() * 500 + "px";
+      }
+      function ola() {
+        // mudar quando a pagina for carregada
+        var data = new Date();
+        var hora = data.getHours();
+        var txt = "";
+        if (hora < 12) {
+          txt = "Bom dia";
+        } else if (hora < 18) {
+          txt = "Boa tarde";
+        } else {
+          txt = "Boa noite";
+        }
+        alert("Ola, " + txt);
+      }
+    </script>
+  </head>
+  <body onload="ola()">
+    <div
+      id="div1"
+      onmouseover="mudaCor(this,'red')"
+      onmouseout="mudaCor(this,'white')"
+    ></div>
+    <!-- o THIS referir a este mesmo objeto-->
+    <br />
+    <button
+      onclick="alert('Cfb cursos')"
+      onmouseover="mudaCor(document.getElementById('div1'),'green'); mudaPos(this)"
+    >
+      Clique em min
+    </button>
+    <!-- eventos accontecimentos por açao do usuario-->
+    <!-- no paramentro de bottom passaou o id da div para assim alterar a div-->
+    <!-- duas funçoes no mesmo evento mudaCor() separa da mudaPos() por ; -->
+  </body>
+</html>
