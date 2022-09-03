@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>manipulando strings</title>
+</head>
+<body>
+  <p id="txt">CFB Cursos - Curso de Javascript</p>
+  <script>
+    var texto1=document.getElementById("txt").innerHTML;
+    var res= texto1.indexOf('j')
+    document.write(res+ '<br/>') // retornou -1 pois não encontrou, se encontrar retorna a posiçao, obs cammelcase, logo se vc escrever maiusculo retornaria 22
+    var res1= texto1.lastIndexOf('C')
+    document.write(res1+ '<br/>') // retorna 13 não 1, pois é onde esta o ultimo caracter encontrado
+
+    var texto2=texto1;
+    var res2=texto1.localeCompare(texto2);// vai retorna 0 se forem iguais, se for diferente de 0 Strings distintas, no caso 0
+
+    var res3= texto1.slice(4, 10)// posiçao inicial e posiçao final + 1
+    document.write(res3 + '</br>') // vai retornar Cursos, 
+
+    var res4= texto1.split(" "); // vai picar a string como vc quiser, no exemplo vai cortar pelos espaços
+    document.write(res4[0] + " " + res4[5]+'<br/>') // ira retornar CFB Javascript - pois o split pega e transforma em vetor de array de acordo com o parametro informado a ele, no caso separado elementos por espaço
+
+    var res5= texto1.substr(4,4);// igual split, porem posiçao inicial e tamanho do corte, 
+    document.write(res5+'<br/>') // ira retornar Curs, ou seja a partir do C e 4 elementos
+
+    var res6= texto1.toLowerCase();// retorna tudo minusculo
+    var res7= texto1.toUpperCase(); // retorna tudo maiusculo
+    var res8= texto1.toUpperCase().substr(22,10)// javascript tudo maiusculo
+    document.write(res6 + '<br/>' + res7 + '<br/>' + res8); 
+</script>
+</body>
+</html>

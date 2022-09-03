@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="txt">CFB Cursos - curso de javascript-aula 46 do curso de javascript</p>
+  <script>
+    var texto=document.getElementById("txt").innerHTML;
+    var res=texto.search(/curso/i) // search mostra a posiçao da primeira ocorrencia encontrada na string txt o reto, se for javascript retornaria(23)
+    document.write(res + '<br/>')
+
+    var res2=texto.replace(/curso/ig, 'aula')
+    document.write(res2 + '<br/>') // CFB aulas - aula de javascript-aula 46 do aula de javascript -- substituir o primeiro paramentro pelo segundo parametor passado no replace
+
+    var res3=texto.charAt(2) 
+    document.write(res3 + '</br>') // vai retornar B, que no array de caracteres "string" está na posiçao 2
+    
+    var res4=texto.charCodeAt(2)
+    document.write(res4 + '<br/>')// retorna o codigo do caracter
+    document.write(String.fromCharCode(res4) + '<br/>')// retorna o caracter atraves da string
+
+    var txt2= ' manipulando strings'
+    var txt3= ' atraves de metodos js'
+    var res5=texto.concat(txt2 + txt3) // concatenar uma string na(s) outra(s) string(s)
+    document.write(res5)
+  </script> 
+</body>
+</html>

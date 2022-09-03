@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metodo match</title>
+  </head>
+  <body>
+    <p id="txt">
+      Cfb Cursos - curso de Javascript- aula 46 do curso de javascript-
+    </p>
+    <script>
+      // match e test sao usadas para string, test retorna boleanos, match retorna um array de string ou null
+      // sintaxe variavel analisada.match("string a pesquisar e retornar") // string.test(variavel a analisar) - true or false
+      // usado para regex tbm
+
+
+      /*
+      var texto=document.getElementById("txt").innerHTML;
+      var res=texto.match("aula");
+      document.write(res.length);// vai retornar 1, pois tem uma vez a palavra aula
+      var res=texto.match("curso");// vai retornar so 2, n tres, porque 1 é Cursos, logo usar as flags(i (maiusculo e minusculp), g(repetição))*/
+
+      var texto=document.getElementById("txt").innerHTML;
+      var res=texto.match(/de/g);
+      document.write(res + ':' + res.length + "<br/>") // de, de : 2
+      var res2=texto.match(/javascript/ig)
+      document.write(res2[0]) // vai retornar o primeiro Javascript, se for [1] sera o javascript, pois ele cria um ARRAY DE RESULTADO DO MATCH
+      /* /^[]/ig TODOS MENOS O QUE TEM DENTRO DO COLCHETE
+        /[oa]/ig todos oa que tem
+        /[a-g]/ig - todas letras entre a e g
+        \d \D \w \W \S \s  \n \r \t \v \O
+        + 
+        */
+
+    </script>
+  </body>
+</html>

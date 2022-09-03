@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="txt">CFB Cursos - Curso de javascript</p>
+  <script>
+    var texto=document.getElementById("txt").innerHTML;
+    var num= 15;
+    var res=num.toString();
+    var res1=num.toString(2);
+    var res2=num.toString(8);
+    var res3=num.toString(16);
+    document.write(res + '<br/>'+ res1 + '<br/>'+ res2 + '<br/>'+ res3+'<br/>'); // 15 1111 17 f -- ou seja alterar numero pela base retornando uma string 
+
+
+    var texto2= 'CFB Cursos - Curso de javascript'
+    var res=texto2.trim();
+    document.write(res) // trim retira os espaços de tabulações iniciais e finais, normalmente tem no alert este espaço
+
+      
+  </script>
+</body>
+</html>
