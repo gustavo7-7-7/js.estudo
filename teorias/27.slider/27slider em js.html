@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #dvslider {
+        margin: 10% 10% 4%;
+        width: 1000px;
+        height: 300px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .btSlider {
+        background-color: rgba(0, 0, 0, 0.4);
+        height: 30%;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+        margin: 10px;
+        border: none;
+      }
+      #dvload {
+        width: 100%;
+        height: 5px;
+        margin-top: 25%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      #dvbarra {
+        width: 0%;
+        height: 100%;
+        background-color: #fff;
+      }
+    </style>
+    <script>
+      //precarregamento da imagem
+      var imgs = []; // array para receber as imagens
+      var slider; // variavel para armazenar a div
+      var imgAtual; // imagem atual
+      var maxImg; // numero maximo de imagens
+      var tmp; //intervalo de troca
+      var tempoTroca;
+      var vTempo;
+      var vBarra;
+
+      function preCarregamento() {
+        // armazenar em um array imgs as imagens
+        var s = 1;
+        for (var i = 0; i < 5; i++) {
+          // numero de arquibos de imagem, logo s1,s2,s3,s4,s5
+          imgs[i] = new Image(); // metodo nova imagem
+          imgs[i].src = "imgs/s" + s + ".jpg";
+          s++;
+        }
+      }
+      function carregarImg(img) {
+        slider.style.backgroundImage = "url('" + imgs[img].src + "')"; //div estilizada por "url("imagem que quer trabalhar, sintaxe de css")"/ url sera o arrays de imgs[parametro da funçao].src
+      }
+      function inicia() {
+        //para iniciar a renderização do carregamento da pagina
+        preCarregamento();
+        imgAtual = 0; // primeira imagem no caso
+        maxImg = imgs.length - 1;
+        slider = document.getElementById("dvslider");
+        vBarra = document.getElementById("dvbarra");
+        carregarImg(imgAtual);
+        tempoTroca = 0;
+        anima();
+      }
+      function troca(dir) {
+        // parametro de direçao
+        tempoTroca = 0;
+        imgAtual += dir; // mais um para proxima imagem, menos um para img anterior
+        if (imgAtual > maxImg) {
+          imgAtual = 0;
+        } else if (imgAtual < 0) {
+          imgAtual = maxImg;
+        }
+        carregarImg(imgAtual); // desfio botoes
+      }
+      function anima() {
+        tempoTroca++;
+        if (tempoTroca >= 500) {
+          tempoTroca = 0; // sempre que zera vai trocar para o proximo
+          troca(1);
+        }
+        vTempo=tempoTroca/5;// tempo troca ta 500, logo para mostrar de 0 a 100%, 
+        vBarra.style.width=vTempo+'%';// % pois é style width, eae vai de 0 a 100 % da largura,
+        window.requestAnimationFrame(anima);
+      }
+
+      window.addEventListener("load", inicia); // devido script acima do body, necessita um load quando a pagina carregar para renderizaçoes inicias de variaveis funçoes etc
+    </script>
+  </head>
+  <body>
+    <div id="dvslider">
+      <button class="btSlider" onclick="troca(-1)"><</button>
+      <div id="dvload">
+        <div id="dvbarra"></div>
+      </div>
+      <button class="btSlider" onclick="troca(1)">></button>
+    </div>
+  </body>
+</html>

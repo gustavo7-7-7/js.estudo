@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formatação condicional</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      table,
+      td,
+      tr,
+      th {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="titulo"></div>
+    <table id="tbnotas">
+      <tr>
+        <th>Aluno</th>
+        <th>Nota 1</th>
+        <th>Nota 2</th>
+        <th>Resultado</th>
+      </tr>
+      <tr>
+        <td>Al1</td>
+        <td>35</td>
+        <td>48</td>
+        <td id="n1"></td>
+      </tr>
+      <tr>
+        <td>Al2</td>
+        <td>20</td>
+        <td>15</td>
+        <td id="n2"></td>
+      </tr>
+      <tr>
+        <td>Al3</td>
+        <td>48</td>
+        <td>48</td>
+        <td id="n3"></td>
+      </tr>
+      <tr>
+        <td>Al4</td>
+        <td>10</td>
+        <td>50</td>
+        <td id="n4"></td>
+      </tr>
+    </table>
+    <script>
+      //emabaixo do codigo nao precisa adicionar evento de load
+      //cria um array para cada posiçao de cada nota
+      var tabela = document.getElementById("tbnotas");
+      var nota;
+
+      for (var i = 1; i < tabela.rows.length; i++) {
+        // porque assim ira variar de acordo com a quantidade de limhas dinamicamente obs a partir de 1 por causa do cabe
+        // pegar as linhas para o calculo da tabela logo acessa rows e a celula especifica
+        // parsefloat pois innerHTML retorna um texto para fazer soma precisa ser number
+        nota =
+          parseFloat(tabela.rows[i].cells[1].innerHTML) +
+          parseFloat(tabela.rows[i].cells[2].innerHTML);
+        tabela.rows[i].cells[3].innerHTML = nota;
+      }
+
+      var n = [];
+      n[0] = document.getElementById("n1");
+      n[1] = document.getElementById("n2");
+      n[2] = document.getElementById("n3");
+      n[3] = document.getElementById("n4");
+
+      for (var i = 0; i < 4; i++) {
+        if (n[i].innerHTML < 70) {
+          n[i].style.color = "#f00";
+        } else {
+          n[i].style.color = "#00f";
+        }
+      }
+    </script>
+  </body>
+</html>
