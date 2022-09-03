@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulando atributos html com js</title>
+  <style>
+    #carro{
+      width:200px;
+      height: 379px;
+      position: absolute;
+      left: 0;
+      top: 40px;
+    }
+    .c1{
+      background-image: url('imgs/c1.jpg');
+    }
+    .c2{
+      background-image: url('imgs/c2.jpg');
+    }
+    .c3{
+      background-image: url('imgs/c3.jpg');
+    }
+  </style>
+  <script>
+    //.setAttribute("class","c1"); primeiro parametro é qualquer  atributo que queire add e o segundo é o valor do atributo  passado para o elemento
+    var dx;
+    var dy;
+
+    function trocaCarro(c){
+      var obj=document.getElementById("carro")
+      if(c==1){
+        obj.setAttribute('class','c1');
+      }else if(c==2){
+        obj.setAttribute('class','c2');
+      }else if(c==3){
+        obj.setAttribute('class','c3');
+      }
+    }
+    function removeCarro(){
+      var obj=document.getElementById("carro")
+      obj.removeAttribute("class");// rmeover atributo 
+    }
+    function verifica(){
+      var obj=document.getElementById("carro")
+      if (obj.hasAttribute('class')){ // verificar se esse paramentro existe.
+        alert("Atributo está na tag");
+      } else {
+        alert("Não está na tag");
+      }
+    } 
+    function inicia(){
+      dx=0
+      window.addEventListener("keydown", teclaDw)
+      window.addEventListener("keyup", teclaDw)
+    }
+    
+    function teclaDw() {
+      var tecla= event.keyCode;
+      var obj=document.getElementById("carro")
+      if(tecla== 37){
+        dx-=50
+        obj.style.left=dx+'px';
+      }
+      if(tecla== 39){
+        dx+=50
+        obj.style.left=dx+'px';
+      }
+    }
+    window.addEventListener('load', inicia)
+  </script>
+</head>
+<body> 
+  <button onclick="trocaCarro(1)">Carro 1</button>
+  <button onclick="trocaCarro(2)">Carro 2</button>
+  <button onclick="trocaCarro(3)">Carro 3</button>
+  <button onclick="removeCarro()">Remover Carro</button>
+  <button onclick="verifica()">Verifica</button>
+  <div id="carro"></div>
+</body>
+</html>
